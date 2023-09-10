@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      'api': process.env.POCKETBASE_URL
+      'api': "https://api.ahmerdev.online"
     }
   },
   app: {
