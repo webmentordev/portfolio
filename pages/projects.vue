@@ -2,7 +2,7 @@
     <section class="w-full">
         <div class="pt-12 px-4 m-auto max-w-3xl text-white">
             <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="work-history">
-                <h1 class="text-4xl mb-3 530px:text-2xl">Projects Database</h1>
+                <h1 class="text-4xl mb-3 530px:text-2xl">Ahmer's Projects</h1>
                 <div v-if="projects" v-for="project in projects" class="even:border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
                     <div class="flex flex-col py-12 border-b last:border-none border-white/10">
                         <div class="flex items-center justify-between mb-3">

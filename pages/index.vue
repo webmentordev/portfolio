@@ -51,6 +51,14 @@
                 </ul>
                 <p v-else class="text-white/70 text-center">No Useful Stacks exist!</p>
             </div>
+            <div class="mb-2 pt-12 pb-5 border-b border-white/10">
+                <h1 class="text-4xl mb-3 530px:text-2xl">Spoken Languages</h1>
+                <ul class="flex flex-wrap text-white/70">
+                    <span class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">Urdu</span>
+                    <span class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">English</span>
+                    <span class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">German</span>
+                </ul>
+            </div>
 
             <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="work-history">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Working History</h1>
