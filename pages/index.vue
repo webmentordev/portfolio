@@ -2,8 +2,7 @@
     <section class="w-full">
         <div class="pt-12 px-4 m-auto max-w-3xl text-white">
             <div class="flex items-center mb-2 710px:flex-col">
-                <img src="/photo.png" width="170" alt="Ahmer Tahir" class="rounded-full 710px:mb-4">
-                <div class="py-2 px-6 710px:px-0">
+                <div class="py-2 710px:px-0">
                     <h1 class="text-4xl mb-3 710px:text-center">Muhammad Ahmer Tahir</h1>
                     <p class="text-white/90 mb-2">Hi, my name is Muhammad Ahmer Tahir from Multan, Pakistan. I'm a Software Engineer with <b class="text-highlight">3+ years experience</b> in the development industry and Freelancer on <b class="text-highlight">Fiverr</b>. I'm specilized in Web Development, Linux System Administration, Amazon Web Services, Graphics Designing and a YouTube Content Creator under name of <b class="text-highlight">WebMentor</b>.</p>
                     <p class="mb-2">Currently learning: <b class="text-highlight">Docker, DevOps</b></p>
@@ -33,23 +32,24 @@
             </ul>
             <div class="mb-2 pt-12">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Skills & Qualifications</h1>
-                <ul class="flex flex-col pl-5 text-white/70 530px:pl-0">
+                <ul class="flex flex-col pl-5 text-white/70 530px:pl-0" v-if="qualifications">
                     <li v-for="qualification in qualifications" class="mb-3"><Icon name="material-symbols:fitbit-check-small" class="text-green-600 text-2xl" /> {{ qualification.title }}</li>
                 </ul>
+                <Loading v-else text="Loading qualifications..." />
             </div>
             <div class="mb-2 pt-12 pb-5 border-b border-white/10">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Tech Stack</h1>
                 <ul class="flex flex-wrap text-white/70" v-if="tech">
                     <span v-for="skill in tech" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ skill.skill }}</span>
                 </ul>
-                <p v-else class="text-white/70 text-center">No Tech Stacks exist!</p>
+                <Loading v-else text="Loading tech stacks..." />
             </div>
             <div class="mb-2 pt-12 pb-5 border-b border-white/10">
-                <h1 class="text-4xl mb-3 530px:text-2xl">Useful Stack</h1>
+                <h1 class="text-4xl mb-3 530px:text-2xl">Resourceful Stacks</h1>
                 <ul class="flex flex-wrap text-white/70" v-if="stacks">
                     <span v-for="stack in stacks" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ stack.name }}</span>
                 </ul>
-                <p v-else class="text-white/70 text-center">No Useful Stacks exist!</p>
+                <Loading v-else text="Loading resourcefull stacks..." />
             </div>
             <div class="mb-2 pt-12 pb-5 border-b border-white/10">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Spoken Languages</h1>

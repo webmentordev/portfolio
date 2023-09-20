@@ -6,9 +6,9 @@ export default defineNuxtConfig({
     'nuxt-icon'
   ],
   runtimeConfig: {
-    'api': process.env.POCKETBASE_URL,
+    'api': "https://api.ahmerdev.online",
     public: {
-      'api': process.env.POCKETBASE_URL
+      'api': "https://api.ahmerdev.online"
     }
   },
   app: {

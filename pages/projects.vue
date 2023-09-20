@@ -3,8 +3,8 @@
         <div class="pt-12 px-4 m-auto max-w-3xl text-white">
             <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="work-history">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Ahmer's Projects</h1>
-                <div v-if="projects" v-for="project in projects" class="even:border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
-                    <div class="flex flex-col py-12 border-b last:border-none border-white/10">
+                <div v-if="projects" v-for="project in projects" class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
+                    <div class="flex flex-col py-12 border-b border-white/10">
                         <div class="flex items-center justify-between mb-3">
                             <img :src="project.image" :alt="project.title+' image'" class="h-[80px] w-[80px] rounded-full">
                             <nuxt-link :to='`${project.github}`' class="bg-indigo-600 hover:bg-black transition-all font-semibold p-3 flex items-center rounded-2xl text-white"><Icon name="bi:github" class="text-white text-xl mr-2" /> Code</nuxt-link>
@@ -16,11 +16,11 @@
                                 <Icon v-for="stack in project.stacks" :name="stack" class="text-2xl mx-2" />
                             </div>
                             <b v-if="project.is_completed" class="text-[12px] py-2 px-3 rounded-lg bg-green-600/20 border border-green-500 inline-block">Completed</b>
-                            <b v-else class="text-[12px] py-2 px-3 rounded-lg bg-yellow-600/20 border border-yellow-500 inline-block">Working ...</b>
+                            <b v-else class="text-[12px] py-2 px-3 rounded-lg bg-yellow-600/20 border border-yellow-500 inline-block">In Progress</b>
                         </div>
                     </div>
                 </div>
-                <p v-else>Loading...</p>
+                <Loading v-else text="Loading projects..." />
             </div>
         </div>
     </section>
