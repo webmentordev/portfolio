@@ -28,18 +28,9 @@
 
 <script setup>
     const projects = ref(null);
-    const nuxtApp = useNuxtApp();
-    const config = useRuntimeConfig();
-    onMounted(async () => {
-        let array = await nuxtApp.$pb.collection('projects').getFullList();
-        projects.value = array.map((item) => ({
-            ...item,
-            image: config.public.api + '/api/files/projects/' + item.id + '/' + item.image,
-            stacks: item.stacks.split(',')
-        }));
-    })
-
-    onUnmounted(async () => {
-        await nuxtApp.$pb.collection('projects').unsubscribe('*');
-    })
+    const { data } = await useFetch('/api/projects');
+    projects.value = data.value.map((item) => ({
+        ...item,
+        stacks: item.stacks.split(',')
+    }))
 </script>

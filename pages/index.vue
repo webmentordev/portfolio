@@ -33,21 +33,21 @@
             <div class="mb-2 pt-12">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Skills & Qualifications</h1>
                 <ul class="flex flex-col pl-5 text-white/70 530px:pl-0" v-if="qualifications">
-                    <li v-for="qualification in qualifications" class="mb-3"><Icon name="material-symbols:fitbit-check-small" class="text-green-600 text-2xl" /> {{ qualification.title }}</li>
+                    <li v-for="qualification in qualifications" class="mb-3"><Icon name="material-symbols:fitbit-check-small" class="text-green-600 text-2xl" /> {{ qualification }}</li>
                 </ul>
                 <Loading v-else text="Loading qualifications..." />
             </div>
             <div class="mb-2 pt-12 pb-5 border-b border-white/10">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Tech Stack</h1>
                 <ul class="flex flex-wrap text-white/70" v-if="tech">
-                    <span v-for="skill in tech" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ skill.skill }}</span>
+                    <span v-for="skill in tech" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ skill }}</span>
                 </ul>
                 <Loading v-else text="Loading tech stacks..." />
             </div>
             <div class="mb-2 pt-12 pb-5 border-b border-white/10">
                 <h1 class="text-4xl mb-3 530px:text-2xl">Resourceful Stacks</h1>
                 <ul class="flex flex-wrap text-white/70" v-if="stacks">
-                    <span v-for="stack in stacks" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ stack.name }}</span>
+                    <span v-for="stack in stacks" class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">{{ stack }}</span>
                 </ul>
                 <Loading v-else text="Loading resourcefull stacks..." />
             </div>
@@ -144,33 +144,15 @@
     const tech = ref(null);
     const qualifications = ref(null);
     const stacks = ref(null);
-    const nuxtApp = useNuxtApp();
 
-    onMounted(async () => {
-        tech.value = await nuxtApp.$pb.collection('skills').getFullList();
-        qualifications.value = await nuxtApp.$pb.collection('qualifications').getFullList();
-        stacks.value = await nuxtApp.$pb.collection('stacks').getFullList();
-        await nuxtApp.$pb.collection('skills').subscribe('*', (e) => {
-            if(e.action == 'create'){
-                // create, delete, update
-                tech.value.push(e.record);
-            }
-        })
-        await nuxtApp.$pb.collection('stacks').subscribe('*', (e) => {
-            if(e.action == 'create'){
-                stacks.value.push(e.record);
-            }
-        })
-        await nuxtApp.$pb.collection('qualifications').subscribe('*', (e) => {
-            if(e.action == 'create'){
-                qualifications.value.push(e.record);
-            }
-        })
-    })
+    const quals = await useFetch('/api/qualifications');
+    qualifications.value = quals.data.value;
 
-    onUnmounted(async () => {
-        await nuxtApp.$pb.collection('skills').unsubscribe('*');
-        await nuxtApp.$pb.collection('stacks').unsubscribe('*');
-        await nuxtApp.$pb.collection('qualifications').unsubscribe('*');
-    })
+
+    const techs = await useFetch('/api/tech');
+    tech.value = techs.data.value;
+
+    const skills = await useFetch('/api/stacks');
+    stacks.value = skills.data.value;
+
 </script>
