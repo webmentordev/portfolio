@@ -1,0 +1,3 @@
+<footer class="py-10 px-4 text-center">
+    <p class="text-white/90 flex items-center justify-center">Copyrights &copy; {{ date('Y') }} AhmerDev — All rights reserved. Portfolio Powered by <img class="ml-3" src="https://api.iconify.design/devicon:livewire.svg?color=%2337e16a" width="25" alt="Livewire 3 Logo"> <span class="mx-2">/</span> <img class="ml-2" src="https://api.iconify.design/logos:laravel.svg?color=%234f46e5" width="25" alt="Laravel 11 Logo"></p>
+</footer>
