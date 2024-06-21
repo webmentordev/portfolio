@@ -8,6 +8,7 @@ use App\Http\Controllers\StackController;
 use App\Http\Controllers\TechController;
 use App\Livewire\Home;
 use App\Livewire\Projects;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
@@ -41,5 +42,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 require __DIR__.'/auth.php';

@@ -23,7 +23,8 @@
                                 <th class="text-end">Created</th>
                                 <th class="text-end">Completed</th>
                                 <th class="text-end">Status</th>
-                                <th class="text-end p-2">Delete</th>
+                                <th class="text-end">Delete</th>
+                                <th class="text-end p-2">Edit</th>
                             </tr>
                             @foreach ($projects as $item)
                                 <tr class="text-sm">
@@ -69,6 +70,7 @@
                                         @method("DELETE")
                                         <button type="submit" class="font-semibold text-red-500">Delete</button>
                                     </form></td>
+                                    <td class="text-end p-2"><a href="{{ route('project.update', $item->id) }}" class="underline text-blue-600">Edit</a></td>
                                 </tr>
                             @endforeach
                         </table>

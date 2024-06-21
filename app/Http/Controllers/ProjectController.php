@@ -56,6 +56,27 @@ class ProjectController extends Controller
         ]);
     }
     public function update(Request $request, Project $project){
+        $request->validate([
+            'name' => 'required',
+            'github' => 'required|url:http,https',
+            'order' => 'required|numeric',
+            'stacks' => 'required',
+            'body' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,webp'
+        ]);
+        $image = null;
+        if($request->hasFile('image')){
+            Storage::disk('public_disk')->delete($project->image);
+            $image = $request->image->store('projects', 'public_disk');
+        }
+        $project->update(array_filter([
+            'name' => $request->name,
+            'github' => $request->github,
+            'order' => $request->order,
+            'stacks' => $request->stacks,
+            'body' => $request->body,
+            'image' => $image
+        ]));
         return back()->with('success', 'Project has been updated!');
     }
 }
