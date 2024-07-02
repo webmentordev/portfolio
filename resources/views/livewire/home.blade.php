@@ -42,6 +42,28 @@
                 @livewire('components.loading', ['text' => 'Loading qualifications...'])
             @endif
         </div>
+        @if (count($works))
+            <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="work-history">
+                <h1 class="text-4xl mb-3 530px:text-2xl">Working History</h1>
+                @foreach ($works as $work)
+                    <div class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
+                        <div class="flex 500px:flex-col py-12 border-b border-white/10">
+                            <img src="{{ $work->image }}" width="50">
+                            <div class="px-4 470px:px-0">
+                                <h3 class="text-2xl">{{ $work->company }} — <b class="text-red-700">{{ $work->title }}</b></h3>
+                                <p class="text-white/70">{{ $work->description }} at <b>{{ $work->company }}</b>, {{ $work->location }}</p>
+                                <b class="text-sm">{{ $work->started_at }} —
+                                @if ($work->end_at)
+                                    {{ $work->end_at }} - 
+                                @else
+                                    Present - 
+                                @endif {{ $work->type }}</b>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <div class="mb-2 pt-12 pb-5 border-b border-white/10">
             <h1 class="text-4xl mb-3 530px:text-2xl">Technology Stacks</h1>
             @if (count($stacks))
@@ -73,50 +95,6 @@
                 <span class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">English</span>
                 <span class="py-2 text-sm hover:bg-white transition-all cursor-pointer hover:text-black font-semibold px-4 border border-white/10 w-fit rounded-lg m-1">German / Deutsch</span>
             </ul>
-        </div>
-
-        <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="work-history">
-            <h1 class="text-4xl mb-3 530px:text-2xl">Working History</h1>
-            <div class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
-                <div class="flex 500px:flex-col py-12 border-b border-white/10">
-                    <img src="https://api.iconify.design/skill-icons:laravel-dark.svg?color=%234f46e5" width="50">
-                    <div class="px-4 470px:px-0">
-                        <h3 class="text-2xl">Vital Neon — <b class="text-red-700">Laravel Developer</b></h3>
-                        <p class="text-white/70">Worked as Laravel / Livewire Developer at <b>Vital Neon</b>, Ontario, Canada</p>
-                        <b class="text-sm">November, 2022 — Present (Remote)</b>
-                    </div>
-                </div>
-            </div>
-            <div class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
-                <div class="flex 500px:flex-col py-12 border-b border-white/10">
-                    <img src="https://api.iconify.design/skill-icons:php-dark.svg?color=%234f46e5" width="50">
-                    <div class="px-4 470px:px-0">
-                        <h3 class="text-2xl">Earning Skills — <b class="text-red-700">Web Dev. Trainer</b></h3>
-                        <p class="text-white/70">Worked as Web Development Trainer at <b>Earning Skills</b>, Multan, Pakistan</p>
-                        <b class="text-sm">August, 2022 — November, 2022 (On-site)</b>
-                    </div>
-                </div>
-            </div>
-            <div class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
-                <div class="flex 500px:flex-col py-12 border-b border-white/10">
-                    <img src="https://api.iconify.design/skill-icons:laravel-dark.svg?color=%234f46e5" width="50">
-                    <div class="px-4 470px:px-0">
-                        <h3 class="text-2xl">AMZ Avenue — <b class="text-red-700">Laravel Developer</b></h3>
-                        <p class="text-white/70">Worked as Laravel / Livewire Developer at <b>AMZAvenue</b>, Multan, Pakistan</p>
-                        <b class="text-sm">June, 2022 — August, 2022 (On-site)</b>
-                    </div>
-                </div>
-            </div>
-            <div class="border-l border-white/10 470px:py-6 px-6 470px:px-0 470px:border-none mb-6">
-                <div class="flex 500px:flex-col py-12">
-                    <img src="https://api.iconify.design/skill-icons:laravel-dark.svg?color=%234f46e5" width="50">
-                    <div class="px-4 470px:px-0">
-                        <h3 class="text-2xl">Freshlay — <b class="text-red-700">Laravel Developer</b></h3>
-                        <p class="text-white/70">Worked as Laravel / Livewire Developer at <b>Freshlay</b>, Multan, Pakistan</p>
-                        <b class="text-sm">March, 2021 — April, 2022 (On-site)</b>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="mb-2 pt-12 pb-5 border-b border-white/10" id="education">
             <h1 class="text-4xl mb-3 530px:text-2xl">Education History</h1>

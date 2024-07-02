@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\StackController;
 use App\Http\Controllers\TechController;
+use App\Http\Controllers\WorkController;
 use App\Livewire\Home;
 use App\Livewire\Projects;
 use Illuminate\Support\Facades\Hash;
@@ -29,6 +30,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/project/delete/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
     Route::patch('/project/status/{project}', [ProjectController::class, 'status'])->name('project.status');
     Route::patch('/project/completed/{project}', [ProjectController::class, 'completed'])->name('project.completed');
+
+    Route::get('/work-listing', [WorkController::class, 'index'])->name('admin.work');
+    Route::get('/work/create', [WorkController::class, 'create'])->name('work.create');
+    Route::post('/work/create', [WorkController::class, 'store'])->name('create.work');
+    Route::get('/work/update/{work}', [WorkController::class, 'edit'])->name('work.update');
+    Route::patch('/work/{work}/update', [WorkController::class, 'update'])->name('update.work');
+    Route::delete('/work/delete/{work}', [WorkController::class, 'destroy'])->name('work.destroy');
 
     Route::get('/stacks', [StackController::class, 'index'])->name('stacks');
     Route::post('/stack/create', [StackController::class, 'store'])->name('stack.create');

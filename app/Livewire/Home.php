@@ -24,7 +24,7 @@ class Home extends Component
         return view('livewire.home', [
             'techs' => Tech::latest()->get(),
             'stacks' => Stack::latest()->get(),
-            'works' => Work::orderBy('order', 'asc')->get(),
+            'works' => Work::orderBy('order', 'desc')->get(),
             'quanlifications' => Qualification::latest()->get()
         ]);
     }

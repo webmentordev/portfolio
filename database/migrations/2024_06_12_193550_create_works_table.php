@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->text('image');
             $table->string('company');
-            $table->string('role');
             $table->string('location');
             $table->string('type');
             $table->string('started_at');
