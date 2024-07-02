@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 Route::get('/projects', Projects::class)->name('projects');
 
+Route::get('/sitemap.xml', function(){
+    return response()->view('sitemap')->header('Content-Type', 'text/xml');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
